@@ -1,0 +1,14 @@
+$primary: #2c86ff; // TODO: This should be Bluey's color
+$secondary: #fe9d6e; // TODO: This should be Bingo's color
+
+@font-face {
+    font-family: Bluey;
+    src: url(/assets/Blueyfont.woff2);
+}  
+
+.blueyfont {
+    font-family: Bluey;
+}
+
+@import "./node_modules/bootstrap/scss/bootstrap";
+
