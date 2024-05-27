@@ -11853,10 +11853,21 @@ textarea.form-control-lg {
 }
 
 .hero {
-  background-image: url(/assets/hero_background.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.hero-day {
+  background-image: url(/assets/hero_day.png);
+}
+
+.hero-mid {
+  background-image: url(/assets/hero_mid.png);
+}
+
+.hero-night {
+  background-image: url(/assets/hero_night.png);
 }
 
 .avatar {

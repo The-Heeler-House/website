@@ -50,7 +50,7 @@ async function updateEventList() {
         if (i % 2 == 0) color = "primary";
 
         let container = document.createElement("div");
-        container.classList.add("container", "row", "text-start", "border", "border-"+color+"-subtle", "border-3", "bg-"+color+"-subtle", "rounded-4", "p-3", "text-lg-start", "text-center", "my-2");
+        container.classList.add("container", "row", "text-start", "border", "border-"+color+"-subtle", "border-3", "bg-"+color+"-subtle", "rounded-4", "p-3", "text-lg-start", "text-center", "my-2", "m-auto");
         container.appendChild(leftSide);
 
         if (event.image != null) {
@@ -76,6 +76,7 @@ async function updateStaffList() {
 
     for (let roleName in data) {
         for (let i = 0; i < data[roleName].length; i++) {
+            if (bioData.ignoredStaff.includes(data[roleName][i].id)) continue;
             let avatar = document.createElement("img");
             avatar.classList.add("avatar", "shadow-sm");
             avatar.alt = `${data[roleName][i].name}'s avatar`;
