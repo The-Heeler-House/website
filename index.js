@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     updateMemberCount();
     updateEventList();
+    //updateStaffList();
 });
 
 async function updateMemberCount() {
@@ -67,6 +68,53 @@ async function updateEventList() {
         
     });
 }
+
+async function updateStaffList() {
+    const response = await fetch("http://localhost:8082/staff");
+    const data = await response.json();
+    const bioData = await (await fetch("/staffMembers.json")).json();
+
+    for (let roleName in data) {
+        for (let i = 0; i < data[roleName].length; i++) {
+            let avatar = document.createElement("img");
+            avatar.classList.add("avatar", "shadow-sm");
+            avatar.alt = `${data[roleName][i].name}'s avatar`;
+            avatar.src = data[roleName][i].avatar;
+
+            let avatarContainer = document.createElement("div");
+            avatarContainer.classList.add((data[roleName].length - 1) == i && i % 2 == 0 ? "col-xl-12" : "col-xl-2", "d-flex", "justify-content-center", "align-self-center");
+            avatarContainer.appendChild(avatar);
+
+            let name = document.createElement("h4");
+            name.innerText = data[roleName][i].name;
+
+            let pronouns = document.createElement("h6");
+            pronouns.innerText = bioData[data[roleName][i].id] != undefined ? bioData[data[roleName][i].id].pronouns || "Unknown, ask." : "Unknown, ask.";
+
+            let bio = document.createElement("p");
+            bio.innerText = bioData[data[roleName][i].id] != undefined ? bioData[data[roleName][i].id].bio || "No bio provided." : "No bio provided.";
+
+            let dataContainer = document.createElement("div");
+            dataContainer.classList.add((data[roleName].length - 1) == i && i % 2 == 0 ? "col-xl-12" : "col-xl-10", "align-self-center");
+            dataContainer.appendChild(name);
+            dataContainer.appendChild(pronouns);
+            dataContainer.appendChild(bio);
+
+            let designContainer = document.createElement("div");
+            designContainer.classList.add("border-3", "shadow-sm", "rounded-3", "bg-"+roleName+"-subtle", "border-"+roleName+"-subtle", "row", "p-2", "d-flex");
+            designContainer.appendChild(avatarContainer);
+            designContainer.appendChild(dataContainer);
+
+            let container = document.createElement("div");
+            container.classList.add((data[roleName].length - 1) == i && i % 2 == 0 ? "col-lg-12" : "col-lg-6" );
+            container.appendChild(designContainer);
+
+            document.getElementById(`${roleName}List`).appendChild(container);
+        }
+    }
+}
+
+// Util functions
 
 function getDateSuffix(date) {
     if ((date.toString().endsWith("1")) && (!date.toString().endsWith("11"))) return "st";
