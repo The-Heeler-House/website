@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     updateMemberCount();
     updateEventList();
-    //updateStaffList();
+    updateStaffList();
 });
 
 async function updateMemberCount() {
@@ -70,7 +70,7 @@ async function updateEventList() {
 }
 
 async function updateStaffList() {
-    const response = await fetch("http://localhost:8082/staff");
+    const response = await fetch("https://api.heeler.house/staff");
     const data = await response.json();
     const bioData = await (await fetch("/staffMembers.json")).json();
 
