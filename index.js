@@ -75,8 +75,8 @@ async function updateStaffList() {
     const bioData = await (await fetch("/staffMembers.json")).json();
 
     for (let roleName in data) {
+        data[roleName] = data[roleName].filter(member => !bioData.ignoredStaff.includes(member.id));
         for (let i = 0; i < data[roleName].length; i++) {
-            if (bioData.ignoredStaff.includes(data[roleName][i].id)) continue;
             let avatar = document.createElement("img");
             avatar.classList.add("avatar", "shadow-sm");
             avatar.alt = `${data[roleName][i].name}'s avatar`;
