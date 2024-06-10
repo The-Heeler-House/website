@@ -17,6 +17,14 @@ async function updateEventList() {
     const response = await fetch("https://api.heeler.house/events");
     const data = await response.json();
 
+    if (data.length == 0) {
+      let noEventText = document.createElement("span");
+      noEventText.classList.add("text-muted", "lead");
+      noEventText.innerText = "No events are scheduled.";
+
+      document.getElementById("ongoingEvents").appendChild(noEventText);
+    }
+
     for (let i = 0; i < data.length; i++) {
         let event = data[i];
         console.log(event);
@@ -63,10 +71,6 @@ async function updateEventList() {
 
         document.getElementById("ongoingEvents").appendChild(container);
     }
-
-    data.forEach(event => {
-        
-    });
 }
 
 async function updateStaffList() {
