@@ -78,6 +78,8 @@ async function updateStaffList() {
     const data = await response.json();
     const bioData = await (await fetch("/staffMembers.json")).json();
 
+    document.getElementById("staff-count-word").innerText = numberToWord(data.leadership.length + data.mods.length + data.helpers.length);
+
     for (let roleName in data) {
         data[roleName] = data[roleName].filter(member => !bioData.ignoredStaff.includes(member.id));
         for (let i = 0; i < data[roleName].length; i++) {
@@ -120,6 +122,23 @@ async function updateStaffList() {
 }
 
 // Util functions
+
+function numberToWord(number) {
+  const numberToWord = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen"];
+  const tensWord = ["", "", "twenty", "thirty", "fourty", "fivty", "sixty", "seventy", "eighty", "ninty"];
+
+  if (number <= 13) {
+    return numberToWord[number];
+  } else if (number <= 19) {
+    return `${numberToWord[number % 10]}teen`;
+  } else {
+    // higher than 13.
+    let tens = Math.floor(number / 10);
+    let units = number % 10;
+
+    return `${tensWord[tens]} ${numberToWord[units]}`;
+  }
+}
 
 function getDateSuffix(date) {
     if ((date.toString().endsWith("1")) && (!date.toString().endsWith("11"))) return "st";
