@@ -11902,4 +11902,23 @@ textarea.form-control-lg {
   border-color: #ffc399;
 }
 
+.channel-mention {
+  font-size: 17px;
+  border-radius: 3px;
+  padding: 0 2px;
+  font-weight: 500;
+  unicode-bidi: plaintext;
+  background: oklab(0.576971 0.014185 -0.208914/0.15);
+  color: oklab(0.576971 0.014185 -0.208914);
+  text-wrap: nowrap;
+}
+
+.channel-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  margin-bottom: 0.2rem;
+  margin-right: 4px;
+}
+
 /*# sourceMappingURL=index.css.map */
