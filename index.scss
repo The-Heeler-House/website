@@ -1,0 +1,83 @@
+$primary: #2c86ff; // TODO: This should be Bluey's color
+$secondary: #fe9d6e; // TODO: This should be Bingo's color
+
+@import "./node_modules/bootstrap/scss/bootstrap";
+
+// Staff colors
+$helpers: #8f9fd5;
+$mods: #216fd4;
+$leadership: #ff6900;
+
+@font-face {
+    font-family: Bluey;
+    src: url(/assets/Blueyfont.woff2);
+}  
+
+.blueyfont {
+    font-family: Bluey;
+}
+
+.hero {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-day {
+    background-image: url(/assets/hero_day.png);
+}
+
+.hero-mid {
+    background-image: url(/assets/hero_mid.png);
+}
+
+.hero-night {
+    background-image: url(/assets/hero_night.png);
+}
+
+.avatar {
+    aspect-ratio: 1 / 1;
+    height: 85px;
+    width: 85px;
+    border-radius: 10px;
+    border-width: 3px;
+}
+
+.bg-helpers-subtle {
+    background-color: tint-color($helpers, 80%);
+}
+.bg-mods-subtle {
+    background-color: tint-color($mods, 80%);
+}
+.bg-leadership-subtle {
+    background-color: tint-color($leadership, 80%);
+}
+
+.border-helpers-subtle {
+    border-color: tint-color($helpers, 60%);
+}
+.border-mods-subtle {
+    border-color: tint-color($mods, 60%);
+}
+.border-leadership-subtle {
+    border-color: tint-color($leadership, 60%);
+}
+
+.channel-mention {
+    font-size: 17px;
+    border-radius: 3px;
+    padding: 0 2px;
+    font-weight: 500;
+    unicode-bidi: plaintext;
+    background: oklab(0.576971 0.014185 -0.208914 / 0.15);
+    color: oklab(0.576971 0.014185 -0.208914);
+    text-wrap: nowrap;
+}
+
+.channel-icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    margin-bottom: 0.2rem;
+    margin-right: 4px;
+}
