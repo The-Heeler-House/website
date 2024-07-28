@@ -108,7 +108,7 @@ async function updateStaffList() {
             dataContainer.appendChild(bio);
 
             let designContainer = document.createElement("div");
-            designContainer.classList.add("border-3", "shadow-sm", "rounded-3", "bg-"+roleName+"-subtle", "border-"+roleName+"-subtle", "row", "p-2", "d-flex");
+            designContainer.classList.add("border-3", "shadow-sm", "rounded-3", `bg-${roleName}-subtle`, `border-${roleName}-subtle`, "row", "p-2", "d-flex");
             designContainer.appendChild(avatarContainer);
             designContainer.appendChild(dataContainer);
 
