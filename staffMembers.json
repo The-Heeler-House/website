@@ -1,4 +1,5 @@
 {
+    "$schema": "https://gist.githubusercontent.com/sudoker0/4f0c6912c7c183b4823b6c4c344f6ffb/raw/thh-website-staffMembers-schema.json",
     "ignoredStaff": ["688982277019271246"],
     "343821237388050443": {
         "bio": "An artist who joined to fight valliently alongside others during the legendary r/Place of 2022. I'm proud of our server and what we strive for. I do my best to uphold our server's rules, but I also try to be understanding. We're all people here. <3",
@@ -89,5 +90,9 @@
     "880567169899958312": {
         "bio": "Joined THH for r/place 2023, stayed for the positive vibes. I've made many friends because of this server and now I'm giving back to the community by working to make this place the best it can possibly be! <3",
         "pronouns": "he/they"
+    },
+    "763377551963717653": {
+        "bio": "I'm a programmer from Vietnam. I make software and website. I also like to play games (Half-Life 2, Garry's Mod, Portal 2 and OMORI my beloved). I am a introvert. Ok bye.",
+        "pronouns": "--./.-../.-/-../---/..."
     }
 }
