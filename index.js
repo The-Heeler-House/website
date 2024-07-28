@@ -58,13 +58,13 @@ async function updateEventList() {
         if (i % 2 == 0) color = "primary";
 
         let container = document.createElement("div");
-        container.classList.add("container", "row", "text-start", "border", "border-"+color+"-subtle", "border-3", "bg-"+color+"-subtle", "rounded-4", "p-3", "text-lg-start", "text-center", "my-2", "m-auto");
+        container.classList.add("container", "row", "text-start", "border", `border-${color}-subtle`, "border-3", `bg-${color}-subtle`, "rounded-4", "p-3", "text-lg-start", "text-center", "my-2", "m-auto");
         container.appendChild(leftSide);
 
         if (event.image != null) {
             let bannerImage = document.createElement("img");
             bannerImage.classList.add("col-lg-5", "p-0", "m-0", "align-self-end", "rounded-3", "align-self-center");
-            bannerImage.src = event.image + "?size=512";
+            bannerImage.src = `${event.image}?size=512`;
 
             container.appendChild(bannerImage);
         }
@@ -108,7 +108,7 @@ async function updateStaffList() {
             dataContainer.appendChild(bio);
 
             let designContainer = document.createElement("div");
-            designContainer.classList.add("border-3", "shadow-sm", "rounded-3", "bg-"+roleName+"-subtle", "border-"+roleName+"-subtle", "row", "p-2", "d-flex");
+            designContainer.classList.add("border-3", "shadow-sm", "rounded-3", `bg-${roleName}-subtle`, `border-${roleName}-subtle`, "row", "p-2", "d-flex");
             designContainer.appendChild(avatarContainer);
             designContainer.appendChild(dataContainer);
 
@@ -125,7 +125,7 @@ async function updateStaffList() {
 
 function numberToWord(number) {
   const numberToWord = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen"];
-  const tensWord = ["", "", "twenty", "thirty", "fourty", "fivty", "sixty", "seventy", "eighty", "ninty"];
+  const tensWord = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
 
   if (number <= 13) {
     return numberToWord[number];
@@ -146,16 +146,15 @@ function getDateSuffix(date) {
     if ((date.toString().endsWith("2")) && (!date.toString().endsWith("13"))) return "rd";
     return "th";
   }
-  
+
   function getMonthName(month) {
-    return ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][month];
+    return ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][month];
   }
-  
+
   function fullDigits(number) {
-    if (number.toString().length == 1) return `0${number}`;
-    return `${number}`;
+    return String(number).padStart(2, "0")
   }
-  
+
   function timeTo12(hours, minutes) {
     if (hours / 12 > 1) {
       return `${hours-12}${minutes != 0 ? `:${fullDigits(minutes)}` : ``}pm`;
