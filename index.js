@@ -88,27 +88,30 @@ async function updateStaffList() {
             avatar.alt = `${data[roleName][i].name}'s avatar`;
             avatar.src = data[roleName][i].avatar;
 
-            let avatarContainer = document.createElement("div");
-            avatarContainer.classList.add((data[roleName].length - 1) == i && i % 2 == 0 ? "col-xl-12" : "col-xl-2", "d-flex", "justify-content-center", "align-self-center");
-            avatarContainer.appendChild(avatar);
-
             let name = document.createElement("h4");
             name.innerText = data[roleName][i].name;
 
             let pronouns = document.createElement("h6");
             pronouns.innerText = bioData[data[roleName][i].id] != undefined ? bioData[data[roleName][i].id].pronouns || "Unknown, ask." : "Unknown, ask.";
 
+            let basicInfoContainer = document.createElement("div")
+            basicInfoContainer.appendChild(name);
+            basicInfoContainer.appendChild(pronouns);
+
+            let avatarContainer = document.createElement("div");
+            avatarContainer.classList.add("d-flex", "align-items-center", "gap-4");
+            avatarContainer.appendChild(avatar);
+            avatarContainer.appendChild(basicInfoContainer)
+
             let bio = document.createElement("p");
             bio.innerText = bioData[data[roleName][i].id] != undefined ? bioData[data[roleName][i].id].bio || "No bio provided." : "No bio provided.";
 
             let dataContainer = document.createElement("div");
-            dataContainer.classList.add((data[roleName].length - 1) == i && i % 2 == 0 ? "col-xl-12" : "col-xl-10", "align-self-center");
-            dataContainer.appendChild(name);
-            dataContainer.appendChild(pronouns);
+            //dataContainer.classList.add((data[roleName].length - 1) == i && i % 2 == 0 ? "col-xl-12" : "col-xl-10");
             dataContainer.appendChild(bio);
 
             let designContainer = document.createElement("div");
-            designContainer.classList.add("border-3", "shadow-sm", "rounded-3", `bg-${roleName}-subtle`, `border-${roleName}-subtle`, "row", "p-2", "d-flex");
+            designContainer.classList.add("border-3", "shadow-sm", "rounded-3", `bg-${roleName}-subtle`, `border-${roleName}-subtle`, "row", "p-3", "d-flex", "flex-column", "gap-2", "h-100");
             designContainer.appendChild(avatarContainer);
             designContainer.appendChild(dataContainer);
 
