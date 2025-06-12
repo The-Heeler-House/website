@@ -1,8 +1,22 @@
+const defaultPref = {
+  "theme": "light"
+}
+
+let currentPref = {}
+
 /* Handles dynamically loaded content, mainly the online count and event list */
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function() {
     updateMemberCount();
     updateEventList();
     updateStaffList();
+
+    currentPref = JSON.parse(localStorage.getItem("userPref"))
+    if (!currentPref) {
+        localStorage.setItem("userPref", JSON.stringify(defaultPref))
+        currentPref = JSON.parse(localStorage.getItem("userPref"))
+    }
+
+    updateTheme(currentPref.theme)
 });
 
 async function updateMemberCount() {
@@ -13,16 +27,59 @@ async function updateMemberCount() {
     document.getElementById("members_online").innerText = data.online;
 }
 
+function updatePref() {
+    localStorage.setItem("userPref", JSON.stringify(currentPref))
+}
+
+const lightDarkToggle = document.querySelector("button#light-dark-toggle")
+
+function switchTheme() {
+    const currentTheme = document.body.getAttribute("data-bs-theme")
+    switch (currentTheme) {
+        case "light":
+            updateTheme("dark")
+            break
+        case "dark":
+            updateTheme("light")
+            break
+    }
+}
+
+function updateTheme(newTheme) {
+    let icon = ""
+    let oldHero = ""
+    let newHero = ""
+    switch (newTheme) {
+        case "light":
+            icon = "light_mode"
+            oldHero = "hero-night"
+            newHero = "hero-day"
+            break
+        case "dark":
+            icon = "dark_mode"
+            oldHero = "hero-day"
+            newHero = "hero-night"
+            break
+    }
+
+    document.body.setAttribute("data-bs-theme", newTheme)
+    lightDarkToggle.querySelector(".material-symbols-rounded").innerText = icon
+
+    document.querySelector(".hero").classList.replace(oldHero, newHero)
+    currentPref.theme = newTheme
+    updatePref()
+}
+
 async function updateEventList() {
     const response = await fetch("https://api.heeler.house/events");
     const data = await response.json();
 
     if (data.length == 0) {
-      let noEventText = document.createElement("span");
-      noEventText.classList.add("text-muted", "lead");
-      noEventText.innerText = "No events are scheduled.";
+        let noEventText = document.createElement("span");
+        noEventText.classList.add("text-muted", "lead");
+        noEventText.innerText = "No events are scheduled.";
 
-      document.getElementById("ongoingEvents").appendChild(noEventText);
+        document.getElementById("ongoingEvents").appendChild(noEventText);
     }
 
     for (let i = 0; i < data.length; i++) {
@@ -111,7 +168,7 @@ async function updateStaffList() {
             dataContainer.appendChild(bio);
 
             let designContainer = document.createElement("div");
-            designContainer.classList.add("border-3", "shadow-sm", "rounded-3", `bg-${roleName}-subtle`, `border-${roleName}-subtle`, "row", "p-3", "d-flex", "flex-column", "gap-2", "h-100");
+            designContainer.classList.add("staff-info", "border-3", "shadow-sm", "rounded-3", `bg-${roleName}-subtle`, `border-${roleName}-subtle`, "row", "p-3", "d-flex", "flex-column", "gap-2", "h-100");
             designContainer.appendChild(avatarContainer);
             designContainer.appendChild(dataContainer);
 
@@ -127,20 +184,20 @@ async function updateStaffList() {
 // Util functions
 
 function numberToWord(number) {
-  const numberToWord = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen"];
-  const tensWord = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+    const numberToWord = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen"];
+    const tensWord = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
 
-  if (number <= 13) {
-    return numberToWord[number];
-  } else if (number <= 19) {
-    return `${numberToWord[number % 10]}teen`;
-  } else {
-    // higher than 13.
-    let tens = Math.floor(number / 10);
-    let units = number % 10;
+    if (number <= 13) {
+        return numberToWord[number];
+    } else if (number <= 19) {
+        return `${numberToWord[number % 10]}teen`;
+    } else {
+        // higher than 13.
+        let tens = Math.floor(number / 10);
+        let units = number % 10;
 
-    return `${tensWord[tens]} ${numberToWord[units]}`;
-  }
+        return `${tensWord[tens]} ${numberToWord[units]}`;
+    }
 }
 
 function getDateSuffix(date) {
@@ -148,21 +205,22 @@ function getDateSuffix(date) {
     if ((date.toString().endsWith("2")) && (!date.toString().endsWith("12"))) return "nd";
     if ((date.toString().endsWith("2")) && (!date.toString().endsWith("13"))) return "rd";
     return "th";
-  }
+}
 
-  function getMonthName(month) {
+function getMonthName(month) {
     return ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][month];
-  }
+}
 
-  function fullDigits(number) {
+function fullDigits(number) {
     return String(number).padStart(2, "0")
-  }
+}
 
-  function timeTo12(hours, minutes) {
+function timeTo12(hours, minutes) {
     if (hours / 12 > 1) {
-      return `${hours-12}${minutes != 0 ? `:${fullDigits(minutes)}` : ``}pm`;
+        return `${hours-12}${minutes != 0 ? `:${fullDigits(minutes)}` : ``}pm`;
     } else {
-      if (hours == 0) hours = 12;
-      return `${hours}${minutes != 0 ? `:${fullDigits(minutes)}` : ``}am`;
+        if (hours == 0) hours = 12;
+        return `${hours}${minutes != 0 ? `:${fullDigits(minutes)}` : ``}am`;
     }
-  }
+}
+lightDarkToggle.addEventListener("click", switchTheme)

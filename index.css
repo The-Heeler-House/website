@@ -11844,6 +11844,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+[data-bs-theme=dark] .staff-info {
+  color: black;
+}
+
 @font-face {
   font-family: Bluey;
   src: url(/assets/Blueyfont.woff2);
@@ -11856,6 +11860,8 @@ textarea.form-control-lg {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: -1;
+  filter: blur(4px) brightness(0.8);
 }
 
 .hero-day {
@@ -11902,8 +11908,14 @@ textarea.form-control-lg {
   border-color: #ffc399;
 }
 
+.material-symbols-rounded {
+  font-size: 1rem;
+  vertical-align: bottom;
+  margin-right: 2px;
+}
+
 .channel-mention {
-  font-size: 17px;
+  font-size: 1rem;
   border-radius: 3px;
   padding: 0 2px;
   font-weight: 500;
