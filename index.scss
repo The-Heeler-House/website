@@ -3,6 +3,12 @@ $secondary: #fe9d6e; // TODO: This should be Bingo's color
 
 @import "./node_modules/bootstrap/scss/bootstrap";
 
+[data-bs-theme="dark"] {
+    .staff-info {
+        color: black;
+    }
+}
+
 // Staff colors
 $helpers: #8f9fd5;
 $mods: #216fd4;
@@ -21,6 +27,8 @@ $leadership: #ff6900;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: -1;
+    filter: blur(4px) brightness(0.8);
 }
 
 .hero-day {
@@ -63,8 +71,15 @@ $leadership: #ff6900;
     border-color: tint-color($leadership, 60%);
 }
 
+.material-symbols-rounded {
+    font-size: 1rem;
+    vertical-align: bottom;
+    margin-right: 2px;
+}
+
 .channel-mention {
-    font-size: 17px;
+
+    font-size: 1rem;
     border-radius: 3px;
     padding: 0 2px;
     font-weight: 500;
