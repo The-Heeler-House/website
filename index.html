@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@32,400,1,200" />
   </head>
   <body data-bs-theme="light">
-    <header class="d-flex flex-wrap justify-content-center p-3 py-2">
+    <!-- <header class="d-flex flex-wrap justify-content-center p-3 py-2">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
         <img src="assets/logo.png" width="40" class="rounded-3" alt="The Heeler House logo" />
         <span class="fs-3 m-1 blueyfont">The Heeler House</span>
@@ -34,7 +34,29 @@
         <li class="nav-item d-flex align-items-center"><a href="#appeals" class="nav-link">Appeals</a></li>
         <li class="nav-item d-flex align-items-center"><button type="button" class="btn btn-outline-primary p-2 ms-2" id="light-dark-toggle"><span class="material-symbols-rounded">dark_mode</span></button></li>
       </ul>
-    </header>
+    </header> -->
+    <nav class="navbar navbar-expand-md sticky-top bg-body">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand d-flex align-items-center gap-2">
+          <img src="assets/logo.png" width="40" class="rounded-3 d-inline-block" alt="The Heeler House logo" />
+          <span class="fs-3 blueyfont">The Heeler House</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarMain">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a href="#about" class="nav-link link-primary">About</a></li>
+            <li class="nav-item"><a href="#events" class="nav-link link-primary">Events</a></li>
+            <li class="nav-item"><a href="#rules" class="nav-link link-primary">Rules</a></li>
+            <li class="nav-item"><a href="#staff" class="nav-link link-primary">Staff</a></li>
+            <li class="nav-item"><a href="#blueypedia" class="nav-link link-primary">Blueypedia</a></li>
+            <li class="nav-item"><a href="#appeals" class="nav-link link-primary">Appeals</a></li>
+            <li class="nav-item"><button type="button" class="btn btn-outline-primary p-2" id="light-dark-toggle"><span class="material-symbols-rounded">dark_mode</span></button></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <main>
       <div class="overflow-hidden px-4 py-5 d-flex justify-content-center position-relative">
@@ -259,6 +281,16 @@
       <p class="mb-1 text-body-secondary text-center">Not affiliated with Ludo Studios or Discord Inc.</p>
     </footer>
 
+    <script async src="https://cdn.jsdelivr.net/npm/es-module-shims@1/dist/es-module-shims.min.js" crossorigin="anonymous"></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "@popperjs/core": "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/esm/popper.min.js",
+        "bootstrap": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.esm.min.js"
+      }
+    }
+    </script>
+    <script src="node_modules/bootstrap/js/index.esm.js" type="module"></script>
     <script src="index.js"></script>
   </body>
 </html>
