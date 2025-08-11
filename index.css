@@ -11933,4 +11933,8 @@ textarea.form-control-lg {
   margin-right: 4px;
 }
 
+.staff-info h4, .staff-info .h4 {
+  word-break: break-all;
+}
+
 /*# sourceMappingURL=index.css.map */
