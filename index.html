@@ -38,20 +38,21 @@
     <nav class="navbar navbar-expand-md sticky-top bg-body">
       <div class="container-fluid">
         <a href="#" class="navbar-brand d-flex align-items-center gap-2">
-          <img src="assets/logo.png" width="40" class="rounded-3 d-inline-block" alt="The Heeler House logo" />
+          <!-- <img src="assets/logo.png" width="36" class="rounded-3 d-inline-block" alt="The Heeler House logo" /> -->
           <span class="fs-3 blueyfont">The Heeler House</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarMain">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a href="#about" class="nav-link link-primary">About</a></li>
-            <li class="nav-item"><a href="#events" class="nav-link link-primary">Events</a></li>
-            <li class="nav-item"><a href="#rules" class="nav-link link-primary">Rules</a></li>
-            <li class="nav-item"><a href="#staff" class="nav-link link-primary">Staff</a></li>
-            <li class="nav-item"><a href="#blueypedia" class="nav-link link-primary">Blueypedia</a></li>
-            <li class="nav-item"><a href="#appeals" class="nav-link link-primary">Appeals</a></li>
+          <ul class="navbar-nav gap-2">
+            <li class="nav-item"><a href="#about" class="nav-link link-primary fw-bold">About</a></li>
+            <li class="nav-item"><a href="#events" class="nav-link link-primary fw-bold">Events</a></li>
+            <li class="nav-item"><a href="#rules" class="nav-link link-primary fw-bold">Rules</a></li>
+            <li class="nav-item"><a href="#staff" class="nav-link link-primary fw-bold">Staff</a></li>
+            <li class="nav-item"><a href="#blueypedia" class="nav-link link-primary fw-bold">Blueypedia</a></li>
+            <li class="nav-item"><a href="#appeals" class="nav-link link-primary fw-bold">Appeals</a></li>
+            <li class="nav-item"><a href="#donate" class="nav-link link-primary fw-bold">Donate</a></li>
             <li class="nav-item"><button type="button" class="btn btn-outline-primary p-2" id="light-dark-toggle"><span class="material-symbols-rounded">dark_mode</span></button></li>
           </ul>
         </div>
@@ -59,24 +60,25 @@
     </nav>
 
     <main>
-      <div class="overflow-hidden px-4 py-5 d-flex justify-content-center position-relative">
+      <div class="overflow-hidden px-4 py-5 d-flex justify-content-center position-relative vh-100">
         <div class="position-absolute w-100 h-100 top-0 left-0 hero hero-day"></div>
-        <div class="p-3 text-center text-light rounded-4">
-          <h1 class="display-3 fw-bold blueyfont">Welcome!</h1>
-          <div class="col-lg-6 mx-auto mb-4">
+        <div class="p-3 text-light rounded-4 d-flex gap-4 align-items-center flex-column flex-lg-row justify-content-center">
+          <img src="assets/logo.png" width="240" height="240" class="rounded-3 d-inline-block" alt="The Heeler House logo" />
+          <div class="text-center text-lg-start">
+            <h1 class="display-3 fw-bold blueyfont">Welcome!</h1>
             <p class="lead mb-4">The largest and most friendly server for all Bluey fans! We have events, Bluey news, bots, interest channels, and more!</p>
-          </div>
-          <div class="d-flex gap-2 bg-opacity-100 justify-content-center mb-4">
-            <span class="badge d-flex align-items-center p-1 pe-2 text-info-emphasis bg-info-subtle border border-info-subtle rounded-pill">
-              <img class="rounded-circle me-1" width="16" height="16" src="/assets/online_icon.png" alt=""><span id="members_online">2,000</span>&nbsp;Online
-            </span>
-            <span class="badge d-flex align-items-center p-1 pe-2 text-info-emphasis bg-info-subtle border border-info-subtle rounded-pill">
-              <img class="rounded-circle me-1" width="16" height="16" src="/assets/offline_icon.png" alt=""><span id="members_all">12,000</span>&nbsp;Members
-            </span>
-          </div>
-          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center bg-opacity-100">
-            <a class="btn btn-primary text-bg-primary btn-lg px-4 gap-3" href="https://discord.gg/blueyheeler" target="_blank">Join our server!</a>
-            <a  class="btn btn-secondary text-bg-secondary btn-lg px-4" href="#events">See upcoming events</a>
+            <div class="d-flex gap-2 bg-opacity-100 mb-4 justify-content-center justify-content-lg-start">
+              <span class="badge d-flex align-items-center p-1 pe-2 text-info-emphasis bg-info-subtle border border-info-subtle rounded-pill">
+                <img class="rounded-circle me-1" width="16" height="16" src="/assets/online_icon.png" alt=""><span id="members_online">2,000</span>&nbsp;Online
+              </span>
+              <span class="badge d-flex align-items-center p-1 pe-2 text-info-emphasis bg-info-subtle border border-info-subtle rounded-pill">
+                <img class="rounded-circle me-1" width="16" height="16" src="/assets/offline_icon.png" alt=""><span id="members_all">12,000</span>&nbsp;Members
+              </span>
+            </div>
+            <div class="d-grid gap-2 d-sm-flex bg-opacity-100 justify-content-center justify-content-lg-start">
+              <a class="btn btn-primary text-bg-primary btn-lg px-4 gap-3" href="https://discord.gg/blueyheeler" target="_blank">Join the server!</a>
+              <a class="btn btn-secondary text-bg-secondary btn-lg px-4" href="#events">See upcoming events</a>
+            </div>
           </div>
         </div>
       </div>
@@ -151,6 +153,15 @@
         <div>
           <p class="lead mb-4">Think you've been punished unfairly? Spent time to reflect on your actions and want another chance? Fill out our appeal form and we'll get back to you with our decision.</p>
           <a class="btn btn-primary" href="https://dyno.gg/form/312c8153" target="_blank">Open form in new tab</a>
+        </div>
+      </div>
+
+      <div class="px-2 py-2 my-5 container mx-auto" id="donate">
+        <h3 class="display-6 fw-bold text-body-emphasis blueyfont">Support The Heeler House!</h3>
+        <div>
+          <p class="lead mb-4">The Heeler House is operated by staff members who are also volunteers from all over the world, so it will be greatly appreciated if you can help us out a bit! You can donate to us through the Ko-Fi embed below. We use these to help cover the cost for our critical server bots, and also for our hosted Minecraft instance.</p>
+          <p class="lead mb-4">Of course, donating is completely optional. The server will still run normally, just with a bit more worries about costs.</p>
+          <a class="btn btn-primary" href="https://ko-fi.com/theheelerhouse" target="_blank">Support Us!</a>
         </div>
       </div>
 
